@@ -6,10 +6,13 @@
   "author": "tienslebienz <etienne.crombez@zenika.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jasmine --config=.jasminerc.json"
+    "test": "jasmine --config=.jasminerc.json",
+    "pretest:watch": "npm test",
+    "test:watch": "chokidar -p 'src/**/*.js' -c 'npm test'"
   },
   "dependencies": {},
   "devDependencies": {
+    "chokidar-cli": "^1.2.0",
     "jasmine": "^2.8.0"
   }
 }
