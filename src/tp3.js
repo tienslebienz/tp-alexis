@@ -40,6 +40,12 @@ function Adulte(nom, prenom, age, permis){
  }
 }
 
+module.exports = {
+  Personne: Personne,
+  Enfant: Enfant,
+  Adulte: Adulte,
+};
+
 var personne = new Personne("Brones", "Alexis", 22);
 var enfant = new Enfant("L'enfant","Sauvage",17,"BAC");
 var adulte = new Adulte("Brones", "Alexis", 22, true);
