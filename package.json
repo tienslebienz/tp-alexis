@@ -1,0 +1,8 @@
+{
+  "name": "tp-alexis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tienslebienz/tp-alexis",
+  "author": "tienslebienz <etienne.crombez@zenika.com>",
+  "license": "MIT"
+}
