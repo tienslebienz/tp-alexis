@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/tienslebienz/tp-alexis",
   "author": "tienslebienz <etienne.crombez@zenika.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jasmine --config=.jasminerc.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
 }
