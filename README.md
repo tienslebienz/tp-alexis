@@ -2,6 +2,7 @@ TP Alexis
 =========
 
 [![Build Status](https://travis-ci.org/tienslebienz/tp-alexis.svg?branch=master)](https://travis-ci.org/tienslebienz/tp-alexis)
+[![Coverage Status](https://coveralls.io/repos/github/tienslebienz/tp-alexis/badge.svg?branch=master)](https://coveralls.io/github/tienslebienz/tp-alexis?branch=master)
 
 Installation
 ------------

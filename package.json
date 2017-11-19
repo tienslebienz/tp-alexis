@@ -9,11 +9,13 @@
     "test": "jasmine --config=.jasminerc.json",
     "pretest:watch": "yarn test",
     "test:watch": "chokidar -p 'src/**/*.js' -c 'yarn test'",
-    "coverage": "nyc yarn test"
+    "coverage": "nyc yarn test",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov yarn test | coveralls"
   },
   "dependencies": {},
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
+    "coveralls": "^3.0.0",
     "jasmine": "^2.8.0",
     "nyc": "^11.3.0"
   }
