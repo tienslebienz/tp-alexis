@@ -1,6 +1,8 @@
 TP Alexis
 =========
 
+[![Build Status](https://travis-ci.org/tienslebienz/tp-alexis.svg?branch=master)](https://travis-ci.org/tienslebienz/tp-alexis)
+
 Installation
 ------------
 
