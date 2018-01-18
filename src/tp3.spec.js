@@ -18,7 +18,7 @@ describe('tp3', function() {
         var personne = new Personne('B','A', 22);
         expect(personne.nom).toBe('B');
         expect(personne.prenom).toBe('A');
-        expect(personne.age).toBe(22);
+        expect(personne.getAge()).toBe(22);
     });
     it('should have toString method showing props', function () {
         var personne = new Personne('B','A', 22);
@@ -39,12 +39,14 @@ describe('tp3', function() {
          var enfant = new Enfant('B','A', 22, 'ZEN');
          expect(enfant.nom).toBe('B');
          expect(enfant.prenom).toBe('A');
-         expect(enfant.age).toBe(22);
+         expect(enfant.getAge()).toBe(22);
          expect(enfant.niveauScolaire).toBe('ZEN');
       });
       it('should have toString method with niveau scolaire prop', function () {
           var enfant = new Enfant('B','A', 22, 'ZEN');
-          expect(enfant.toString()).toBe("B A 22 ZEN")
+          enfant.niveauScolaire = "zenika";
+          expect(enfant.toString()).not.toBe("B A 22 ZEN");
+          expect(enfant.toString()).toBe("B A 22 zenika");
       });
   });
 
@@ -61,12 +63,27 @@ describe('tp3', function() {
          var adulte = new Adulte('B', 'A', 22, true);
          expect(adulte.nom).toBe('B');
          expect(adulte.prenom).toBe('A');
-         expect(adulte.age).toBe(22);
+         expect(adulte.getAge()).toBe(22);
          expect(adulte.permis).toBe(true);
       });
       it('should have toString method with permis prop', function () {
           var adulte = new Adulte('B','A', 22, true);
-          expect(adulte.toString()).toBe("B A 22 true")
+          adulte.permis = false;
+          expect(adulte.toString()).toBe("B A 22 false")
+          expect(adulte.toString()).not.toBe("B A 22 true")
       });
+  });
+
+  describe('Personne - modify', function () {
+      var Personne;
+      beforeEach(function() {
+          Personne = tp3.Personne;
+      });
+      it('shouldnt modify age directly', function () {
+          var personne = new Personne('B', 'A', 22);
+          personne.age = 23;
+          expect(personne.getAge()).not.toBe(23);
+          expect(personne.getAge()).toBe(22);
+      })
   })
 });
