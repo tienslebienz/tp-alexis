@@ -16,13 +16,13 @@ describe('tp3', function() {
     });
     it('should have properties', function () {
         var personne = new Personne('B','A', 22);
-        expect(personne.nom).toBeDefined();
-        expect(personne.prenom).toBeDefined();
-        expect(personne.age).toBeDefined();
+        expect(personne.nom).toBe('B');
+        expect(personne.prenom).toBe('A');
+        expect(personne.age).toBe(22);
     });
-    it('should have toString() method showing props', function () {
+    it('should have toString method showing props', function () {
         var personne = new Personne('B','A', 22);
-        expect(personne.toString()).toEqual("B A 22");
+        expect(personne.toString()).toBe("B A 22");
     });
   });
 
@@ -37,11 +37,11 @@ describe('tp3', function() {
       });
       it('should have niveauScolaire prop', function () {
          var enfant = new Enfant('B','A', 22, 'ZEN');
-         expect(enfant.niveauScolaire).toBeDefined();
+         expect(enfant.niveauScolaire).toBe('ZEN');
       });
       it('should have toString method with niveau scolaire prop', function () {
           var enfant = new Enfant('B','A', 22, 'ZEN');
-          expect(enfant.toString).toEqual("B A 22 niveau: ZEN")
+          expect(enfant.toString()).toBe("B A 22 ZEN")
       });
   });
 
@@ -56,11 +56,11 @@ describe('tp3', function() {
       });
       it('should have permis prop', function () {
          var adulte = new Adulte('B', 'A', 22, true);
-         expect(adulte.permis).toBeDefined();
+         expect(adulte.permis).toBe(true);
       });
       it('should have toString method with permis prop', function () {
           var adulte = new Adulte('B','A', 22, true);
-          expect(adulte.toString).toEqual("B A 22 permis: true")
+          expect(adulte.toString()).toBe("B A 22 true")
       });
   })
 });
