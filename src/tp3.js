@@ -27,8 +27,16 @@ function Personne(nom, prenom, age){
   };
   Personne.prototype.toString = function(){
       return this.nom + " " + this.prenom + " " + Personne.prototype.getAge.call(this);
-  }
+  };
+    Object.defineProperty(this, "nom", {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: nom
+    });
 }
+
+
 
 function Enfant(nom, prenom, age, niveauScolaire){
   Personne.call(this, nom, prenom, age);

@@ -84,6 +84,12 @@ describe('tp3', function() {
           personne.age = 23;
           expect(personne.getAge()).not.toBe(23);
           expect(personne.getAge()).toBe(22);
-      })
-  })
+      });
+      it('shouldnt modify name', function () {
+          var personne = new Personne('B', 'A', 22);
+          personne.nom = 'toto';
+          expect(personne.nom).not.toBe('toto');
+          expect(personne.nom).toBe('B');
+      });
+  });
 });
