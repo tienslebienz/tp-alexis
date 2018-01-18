@@ -18,9 +18,15 @@
 function Personne(nom, prenom, age){
   this.nom = nom;
   this.prenom = prenom;
-  this.age = age;
+  var age = age;
+  Personne.prototype.getAge = function () {
+      return age;
+  };
+  Personne.prototype.setAge = function(newAge){
+      age = newAge;
+  };
   Personne.prototype.toString = function(){
-      return this.nom + " " + this.prenom + " " + this.age;
+      return this.nom + " " + this.prenom + " " + Personne.prototype.getAge.call(this);
   }
 }
 
@@ -30,6 +36,12 @@ function Enfant(nom, prenom, age, niveauScolaire){
   this.toString = function () {
       return Personne.prototype.toString.call(this) + " " + this.niveauScolaire;
   };
+  this.getAge = function () {
+      return Personne.prototype.getAge();
+  }
+  this.setAge = function (age) {
+      return Personne.prototype.setAge();
+  }
 }
 
 function Adulte(nom, prenom, age, permis){
@@ -38,6 +50,12 @@ function Adulte(nom, prenom, age, permis){
   this.toString = function () {
      return Personne.prototype.toString.call(this) + " " + this.permis;
   };
+    this.getAge = function () {
+        return Personne.prototype.getAge();
+    }
+    this.setAge = function (age) {
+        return Personne.prototype.setAge();
+    }
 }
 
 module.exports = {
