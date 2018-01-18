@@ -19,21 +19,25 @@ function Personne(nom, prenom, age){
   this.nom = nom;
   this.prenom = prenom;
   this.age = age;
-  this.toString = function(param) {
-    return this.nom + " " + this.prenom + " " + this.age + " " + param;
+  Personne.prototype.toString = function(){
+      return this.nom + " " + this.prenom + " " + this.age;
   }
 }
 
 function Enfant(nom, prenom, age, niveauScolaire){
   Personne.call(this, nom, prenom, age);
   this.niveauScolaire = niveauScolaire || "nul";
-  this.toString = this.toString(niveauScolaire);
+  this.toString = function () {
+      return Personne.prototype.toString.call(this) + " " + this.niveauScolaire;
+  };
 }
 
 function Adulte(nom, prenom, age, permis){
- Personne.call(this, nom, prenom, age);
- this.permis = permis || false;
- this.toString = this.toString(permis);
+  Personne.call(this, nom, prenom, age);
+  this.permis = permis || false;
+  this.toString = function () {
+     return Personne.prototype.toString.call(this) + " " + this.permis;
+  };
 }
 
 module.exports = {
