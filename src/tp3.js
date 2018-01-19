@@ -15,55 +15,61 @@
     Que constatez-vous ?
 **/
 
-function Personne(nom, prenom, age){
-  this.nom = nom;
-  this.prenom = prenom;
-  var age = age;
-  Personne.prototype.getAge = function () {
-      return age;
-  };
-  Personne.prototype.setAge = function(newAge){
-      age = newAge;
-  };
-  Personne.prototype.toString = function(){
-      return this.nom + " " + this.prenom + " " + Personne.prototype.getAge.call(this);
-  };
-    Object.defineProperty(this, "nom", {
+function Personne(nom, prenom, age) {
+    this.nom = nom;
+    this.prenom = prenom;
+    var age = age;
+    Personne.prototype.getAge = function() {
+        return age;
+    };
+    Personne.prototype.setAge = function(newAge) {
+        age = newAge;
+    };
+    Personne.prototype.toString = function() {
+        return (
+            this.nom +
+            ' ' +
+            this.prenom +
+            ' ' +
+            Personne.prototype.getAge.call(this)
+        );
+    };
+    Object.defineProperty(this, 'nom', {
         enumerable: false,
         configurable: false,
         writable: false,
-        value: nom
+        value: nom,
     });
 }
 
-
-
-function Enfant(nom, prenom, age, niveauScolaire){
-  Personne.call(this, nom, prenom, age);
-  this.niveauScolaire = niveauScolaire || "nul";
-  this.toString = function () {
-      return Personne.prototype.toString.call(this) + " " + this.niveauScolaire;
-  };
-  this.getAge = function () {
-      return Personne.prototype.getAge();
-  }
-  this.setAge = function (age) {
-      return Personne.prototype.setAge();
-  }
+function Enfant(nom, prenom, age, niveauScolaire) {
+    Personne.call(this, nom, prenom, age);
+    this.niveauScolaire = niveauScolaire || 'nul';
+    this.toString = function() {
+        return (
+            Personne.prototype.toString.call(this) + ' ' + this.niveauScolaire
+        );
+    };
+    this.getAge = function() {
+        return Personne.prototype.getAge();
+    };
+    this.setAge = function(age) {
+        return Personne.prototype.setAge();
+    };
 }
 
-function Adulte(nom, prenom, age, permis){
-  Personne.call(this, nom, prenom, age);
-  this.permis = permis || false;
-  this.toString = function () {
-     return Personne.prototype.toString.call(this) + " " + this.permis;
-  };
-    this.getAge = function () {
+function Adulte(nom, prenom, age, permis) {
+    Personne.call(this, nom, prenom, age);
+    this.permis = permis || false;
+    this.toString = function() {
+        return Personne.prototype.toString.call(this) + ' ' + this.permis;
+    };
+    this.getAge = function() {
         return Personne.prototype.getAge();
-    }
-    this.setAge = function (age) {
+    };
+    this.setAge = function(age) {
         return Personne.prototype.setAge();
-    }
+    };
 }
 
 module.exports = {
