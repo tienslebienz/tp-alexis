@@ -15,41 +15,57 @@
     Que constatez-vous ?
 **/
 
-function Personne(nom, prenom, age){
-  this.nom = nom;
-  this.prenom = prenom;
-  this.age = age;
-  this.toString = function() {
-    return this.nom + " " + this.prenom + " " + this.age;
-  }
+function Personne(nom, prenom, age) {
+    this.nom = nom;
+    this.prenom = prenom;
+    var age = age;
+    Personne.prototype.getAge = function() {
+        return age;
+    };
+    Personne.prototype.setAge = function(newAge) {
+        age = newAge;
+    };
+    Personne.prototype.toString = function() {
+        return this.nom + ' ' + this.prenom + ' ' + Personne.prototype.getAge.call(this);
+    };
+    Object.defineProperty(this, 'nom', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: nom,
+    });
 }
 
-function Enfant(nom, prenom, age, niveauScolaire){
-  Personne.call(this, nom, prenom, age);
-  this.niveauScolaire = niveauScolaire || "nul";
-  this.toString = function() {
-    return this.nom + " " + this.prenom + " " + this.age+ " niveau:"+ this.niveauScolaire;
-  }
+function Enfant(nom, prenom, age, niveauScolaire) {
+    Personne.call(this, nom, prenom, age);
+    this.niveauScolaire = niveauScolaire || 'nul';
+    this.toString = function() {
+        return Personne.prototype.toString.call(this) + ' ' + this.niveauScolaire;
+    };
+    this.getAge = function() {
+        return Personne.prototype.getAge();
+    };
+    this.setAge = function(age) {
+        return Personne.prototype.setAge();
+    };
 }
 
-function Adulte(nom, prenom, age, permis){
- Personne.call(this, nom, prenom, age);
- this.permis = permis || false;
- this.toString = function() {
-   return this.nom + " " + this.prenom + " " + this.age+ " permis"+ this.permis;
- }
+function Adulte(nom, prenom, age, permis) {
+    Personne.call(this, nom, prenom, age);
+    this.permis = permis || false;
+    this.toString = function() {
+        return Personne.prototype.toString.call(this) + ' ' + this.permis;
+    };
+    this.getAge = function() {
+        return Personne.prototype.getAge();
+    };
+    this.setAge = function(age) {
+        return Personne.prototype.setAge();
+    };
 }
 
 module.exports = {
-  Personne: Personne,
-  Enfant: Enfant,
-  Adulte: Adulte,
+    Personne: Personne,
+    Enfant: Enfant,
+    Adulte: Adulte,
 };
-
-var personne = new Personne("Brones", "Alexis", 22);
-var enfant = new Enfant("L'enfant","Sauvage",17,"BAC");
-var adulte = new Adulte("Brones", "Alexis", 22, true);
-
-adulte.nom = "new Name"; // le nom de l'adulte est maintenant "new Name"
-
-//Si on remplace tout par les this des props par var on obtient que des [object Object] soit des objets "undefined"
