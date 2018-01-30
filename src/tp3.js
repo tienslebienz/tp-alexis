@@ -26,13 +26,7 @@ function Personne(nom, prenom, age) {
         age = newAge;
     };
     Personne.prototype.toString = function() {
-        return (
-            this.nom +
-            ' ' +
-            this.prenom +
-            ' ' +
-            Personne.prototype.getAge.call(this)
-        );
+        return this.nom + ' ' + this.prenom + ' ' + Personne.prototype.getAge.call(this);
     };
     Object.defineProperty(this, 'nom', {
         enumerable: false,
@@ -46,9 +40,7 @@ function Enfant(nom, prenom, age, niveauScolaire) {
     Personne.call(this, nom, prenom, age);
     this.niveauScolaire = niveauScolaire || 'nul';
     this.toString = function() {
-        return (
-            Personne.prototype.toString.call(this) + ' ' + this.niveauScolaire
-        );
+        return Personne.prototype.toString.call(this) + ' ' + this.niveauScolaire;
     };
     this.getAge = function() {
         return Personne.prototype.getAge();
